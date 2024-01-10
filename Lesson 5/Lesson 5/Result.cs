@@ -25,11 +25,5 @@ namespace Lesson_5
 
             set { this._error = value; }
         }
-
-        public string ErrorMessage()
-        {
-            string errorMessage = "You have an error";
-            return errorMessage;
-        }
     }
 }
