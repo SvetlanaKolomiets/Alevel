@@ -29,11 +29,5 @@ namespace Homework7.ExtensionMethods
                 Console.WriteLine(weight);
             }
         }
-
-        public static void FindSweet(this GiftService giftService)
-        {
-            var gifts = giftService.CreateAGift();
-
-        }
     }
 }
