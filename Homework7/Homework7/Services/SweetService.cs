@@ -72,7 +72,7 @@ namespace Homework7.Services
             
         }
 
-        public int SweetQuantity()
+        public int ChooseSweetQuantity()
         {
 
             while (_userWantsToContinue)

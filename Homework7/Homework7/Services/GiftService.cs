@@ -19,7 +19,7 @@ namespace Homework7.Services
             do
             {
                 var sweet = _sweetService.ChooseSweet();
-                var sweetQuantity = _sweetService.SweetQuantity();
+                var sweetQuantity = _sweetService.ChooseSweetQuantity();
                 if (sweet == null || sweetQuantity == 0)
                 {
                     return _gift;
