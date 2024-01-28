@@ -1,18 +1,24 @@
-﻿using Homework10.Models;
+﻿using Homework10.Enums;
+using Homework10.Models;
 using Homework10.Services.Abstractions;
 namespace Homework10.Services
 {
 	public class PluggingInAppliancesService : IPluggingInIntoASocketService
 	{
-		private IElectricalApplianceService _electricalApplianceService;
+		private readonly IElectricalApplianceService _electricalApplianceService;
+        private readonly ILoggerService _loggerService;
         private ElectricalAppliance[] _pluggedInElectricalAppliances = new ElectricalAppliance[0];
         private int _pluggedInApplianceNumber = 0;
         private bool _userWantsToContinue = true;
         private ElectricalAppliance _electricalAppliance;
 
-        public PluggingInAppliancesService(IElectricalApplianceService electricalApplianceService)
+        public PluggingInAppliancesService(
+            IElectricalApplianceService electricalApplianceService,
+            ILoggerService loggerService
+            )
 		{
 			_electricalApplianceService = electricalApplianceService;
+            _loggerService = loggerService;
         }
 
         public ElectricalAppliance ChooseElectricalAppliance()
@@ -55,11 +61,13 @@ namespace Homework10.Services
                 {
                     if (_electricalAppliance == null)
                     {
-                        return null;
+                        Console.WriteLine("Can't plug in electrical appliance");
+                        _loggerService.Log(LogType.Error, "Can't plug in electrical appliance");
                     }
                     else if (isApplianceAlreadyPluggedIn)
                     {
                         Console.WriteLine("This appliance is already plugged in. Choose another appliance");
+                        _loggerService.Log(LogType.Warning, "This appliance is already plugged in. Choose another appliance");
                     }
                 }
 
@@ -90,6 +98,8 @@ namespace Homework10.Services
             Array.Resize(ref _pluggedInElectricalAppliances, _pluggedInElectricalAppliances.Length + 1);
             _pluggedInElectricalAppliances[_pluggedInApplianceNumber] = electricalAppliance;
             _pluggedInElectricalAppliances[_pluggedInApplianceNumber].IsPluggedIn = true;
+            _loggerService.Log(LogType.Info, $"{electricalAppliance.ApplianceType} " +
+                $"{electricalAppliance.Name} was plugged in");
             _pluggedInApplianceNumber++;
         }
     }
