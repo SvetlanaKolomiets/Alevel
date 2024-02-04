@@ -21,13 +21,13 @@ namespace Homework11
 
             Console.WriteLine();
 
-            _personService.SortPeopleByName();
+            _personService.SortByAge();
 
             _personService.DisplayPeople();
 
             Console.WriteLine();
 
-            _personService.SortPeopleByAge();
+            _personService.SortByName();
 
             _personService.DisplayPeople();
 

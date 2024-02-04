@@ -4,7 +4,7 @@ using Homework11.Collections.Enumerators;
 namespace Homework11.Collections
 {
 	public class MyCollection<T> : Collection<T>
-	{
+    {
         private List<T> _items;
 
         public MyCollection()
@@ -12,9 +12,9 @@ namespace Homework11.Collections
             _items = new List<T>();
 		}
 
-        public T this[int index] => _items[index];
+        public new T this[int index] => _items[index];
 
-        public int Count
+        public new int Count
         {
             get
             {
@@ -22,15 +22,20 @@ namespace Homework11.Collections
             }
         }
 
-        public void Sort(Comparison<T> comparison)
+        public void BubbleSort(Comparison<T> comparison)
         {
-            if (_items is List<T> list)
+            var count = _items.Count;
+            for (var i = 1; i < count; i++)
             {
-                list.Sort(comparison);
-            }
-            else
-            {
-                throw new Exception("Can't sort a collection");
+                for (var j = 0; j < count - i; j++)
+                {
+                    if (comparison(_items[j], _items[j + 1]) > 0)
+                    {
+                        var temp = _items[j];
+                        _items[j] = _items[j + 1];
+                        _items[j + 1] = temp;
+                    }
+                }
             }
         }
 

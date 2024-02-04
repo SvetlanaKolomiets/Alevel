@@ -33,14 +33,14 @@ namespace Homework11.Services
             }
         }
 
-        public void SortPeopleByName()
+        public void SortByAge()
         {
-            _people.Sort((person1, person2) => person1.Name.CompareTo(person2.Name));
+            _people.BubbleSort((person1, person2) => person1.Age.CompareTo(person2.Age));
         }
 
-        public void SortPeopleByAge()
+        public void SortByName()
         {
-            _people.Sort((person1, person2) => person1.Age.CompareTo(person2.Age));
+            _people.BubbleSort((person1, person2) => person1.Name.CompareTo(person2.Name));
         }
 
         public void SetDefaultPerson(int index, string defaultName, int defaultAge)
@@ -53,6 +53,7 @@ namespace Homework11.Services
                 }
             );
         }
+        
     }
 }
 
