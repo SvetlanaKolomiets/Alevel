@@ -15,8 +15,8 @@ class Program
             serviceCollection.AddOptions<LoggerOption>().Bind(configuration.GetSection("Logger"));
             serviceCollection.AddOptions<BackupOption>().Bind(configuration.GetSection("Backup"));
 
-            serviceCollection.AddTransient<IBackupService, BackupService>()
-                .AddTransient<ILoggerService, LoggerService>()
+            serviceCollection.AddSingleton<IBackupService, BackupService>()
+                .AddSingleton<ILoggerService, LoggerService>()
                 .AddTransient<LoggerOption>()
                 .AddTransient<BackupOption>()
                 .AddTransient<App>();
