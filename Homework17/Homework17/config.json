@@ -1,0 +1,10 @@
+﻿{
+  "Logger": {
+    "Path": "/Users/Svitlana/Documents/Logs/log.txt",
+    "NumberOfLogsForBackup": 25
+  },
+
+  "Backup": {
+    "Path": "/Users/Svitlana/Documents/Backup/"
+  }
+}
