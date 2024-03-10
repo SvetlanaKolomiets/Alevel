@@ -19,6 +19,8 @@ class Program
                 .AddHttpClient()
                 .AddTransient<IInternalHttpClientService, InternalHttpClientService>()
                 .AddTransient<IUserService, UserService>()
+                .AddTransient<IResourceService, ResourceService>()
+                .AddTransient<IAuthenticationService, AuthenticationService>()
                 .AddTransient<App>();
         }
 

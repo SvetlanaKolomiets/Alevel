@@ -1,6 +1,6 @@
 ﻿namespace Homework18.Dtos.Responses
 {
-	public class UpdateUserResponse
+	public class UpdatedUserResponse
 	{
         public string Name { get; set; }
         public string Job { get; set; }
