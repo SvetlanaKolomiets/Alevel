@@ -7,6 +7,7 @@ class HomeStore {
     totalPages = 0;
     currentPage = 1;
     isLoading = false;
+    tabValue = 0;
 
     constructor() {
         makeAutoObservable(this);
@@ -30,6 +31,14 @@ class HomeStore {
             }
         }
         this.isLoading = false;
+    };
+
+    setTabValue(value: number) {
+        this.tabValue = value;
+    };
+
+    handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+        this.setTabValue(newValue);
     };
 }
 

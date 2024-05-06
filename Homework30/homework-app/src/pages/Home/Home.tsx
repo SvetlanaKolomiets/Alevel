@@ -5,26 +5,22 @@ import HomeStore from "./HomeStore";
 import UserCard from "./components/UserCard";
 import UserForm from "./components/UserForm";
 import UpdateUserForm from "./components/UpdateUserForm";
-import { makeAutoObservable } from "mobx";
 import { IUser } from "../../interfaces/users";
 
-const store = HomeStore;
+
 
 const Home: FC<any> = (): ReactElement => {
-    const [tabValue, setTabValue] = useState<number>(0);
-
-    const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
-        setTabValue(newValue);
-    };
+    
+    const store = HomeStore;
 
     return (
         <Container>
-            <Tabs value={tabValue} onChange={handleTabChange}>
+            <Tabs value={store.tabValue} onChange={store.handleTabChange}>
                 <Tab label="Users" />
                 <Tab label="Create User" />
                 <Tab label="Update User" />
             </Tabs>
-            {tabValue === 0 && (
+            {store.tabValue === 0 && (
                 <Box>
                     <Grid container spacing={4} justifyContent="center" my={4}>
                         {store.isLoading ? (
@@ -49,12 +45,12 @@ const Home: FC<any> = (): ReactElement => {
                     </Box>
                 </Box>
             )}
-            {tabValue === 1 && (
+            {store.tabValue === 1 && (
                 <Box mt={4}>
                     <UserForm />
                 </Box>
             )}
-            {tabValue === 2 && (
+            {store.tabValue === 2 && (
                 <Box mt={4}>
                     <UpdateUserForm />
                 </Box>

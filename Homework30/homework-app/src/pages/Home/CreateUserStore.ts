@@ -21,7 +21,7 @@ class UserFormStore {
     }
   };
 
-  handleSubmit = async (event: FormEvent) => {
+  handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
       this.loading = true;
