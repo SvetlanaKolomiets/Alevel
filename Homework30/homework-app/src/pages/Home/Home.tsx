@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, useEffect, useState } from "react";
+import React, { FC, ReactElement} from "react";
 import { Box, CircularProgress, Container, Grid, Pagination, Tab, Tabs } from '@mui/material';
 import { observer } from "mobx-react-lite";
 import HomeStore from "./HomeStore";
@@ -10,7 +10,7 @@ import { IUser } from "../../interfaces/users";
 
 
 const Home: FC<any> = (): ReactElement => {
-    
+
     const store = HomeStore;
 
     return (

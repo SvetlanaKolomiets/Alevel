@@ -1,11 +1,4 @@
-import {
-    action, makeAutoObservable,
-    makeObservable,
-    observable,
-    runInAction,
-} from "mobx";
-import {IUser} from "../../interfaces/users";
-import * as userApi from "../../api/modules/users";
+import {makeAutoObservable} from "mobx";
 import AuthStore from "../../stores/AuthStore";
 
 

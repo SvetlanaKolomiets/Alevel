@@ -1,5 +1,5 @@
 export interface IResource {
-    'id': number,
+    'id': string,
     'name': string,
     'year': number,
     'color': string,

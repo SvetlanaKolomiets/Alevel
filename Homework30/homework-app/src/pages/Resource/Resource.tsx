@@ -1,70 +1,41 @@
-import React, {ReactElement, FC, useEffect, useState} from "react";
-import {
-    Box,
-    Card,
-    CardContent,
-    CardMedia,
-    CircularProgress,
-    Container,
-    Grid,
-    Pagination,
-    Typography
-} from '@mui/material'
-import * as resourceApi from "../../api/modules/resources"
-import {IResource} from "../../interfaces/resources";
-import {useParams} from "react-router-dom";
+import React, { ReactElement, FC } from "react";
+import { Container, Grid, CircularProgress, Card, CardContent, Typography } from '@mui/material';
+import { observer } from "mobx-react";
+import ResourceStore from "./ResourceStore";
 
 const Resource: FC<any> = (): ReactElement => {
-    const [resource, setResource] = useState<IResource | null>(null)
-    const [isLoading, setIsLoading] = useState<boolean>(false)
-    const { id } = useParams()
-
-    useEffect(() => {
-        if (id) {
-            const getResource = async () => {
-                try {
-                    setIsLoading(true)
-                    const res = await resourceApi.getById(id)
-                    setResource(res.data)
-                } catch (e) {
-                    if (e instanceof Error) {
-                        console.error(e.message)
-                    }
-                }
-                setIsLoading(false)
-            }
-            getResource()
-        }
-    }, [id])
+    const store = ResourceStore;
 
     return (
         <Container>
             <Grid container spacing={4} justifyContent="center" m={4}>
-                {isLoading ? (
+                {store.isLoading ? (
                     <CircularProgress />
                 ) : (
-                    <>
-                        <Card sx={{ maxWidth: 250 }}>
+                    store.resource ? (
+                        <Card key={store.resource.id} sx={{ maxWidth: 250 }}>
                             <div
                                 style={{
                                     height: 250,
-                                    backgroundColor: resource?.color
+                                    backgroundColor: store.resource.color
                                 }}
                             />
                             <CardContent>
                                 <Typography noWrap gutterBottom variant="h6" component="div">
-                                    {resource?.name}
+                                    {store.resource.name}
                                 </Typography>
                                 <Typography variant="body2" color="text.secondary">
-                                    {resource?.year} {resource?.color}
+                                    {store.resource.year} {store.resource.color}
                                 </Typography>
                             </CardContent>
                         </Card>
-                    </>
+                    ) : (
+                        <Typography variant="body1" color="text.secondary">No resource found</Typography>
+                    )
                 )}
             </Grid>
         </Container>
     );
 };
 
-export default Resource;
+export default observer(Resource);

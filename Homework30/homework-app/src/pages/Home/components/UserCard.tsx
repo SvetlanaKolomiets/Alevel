@@ -2,14 +2,23 @@ import {Card, CardActionArea, CardContent, CardMedia, Typography} from "@mui/mat
 import {FC, ReactElement} from "react";
 import {IUser} from "../../../interfaces/users";
 import {useNavigate} from "react-router-dom";
+import UserStore from "../../Users/UserStore";
 
 const UserCard: FC<IUser> = (props): ReactElement => {
 
     const navigate = useNavigate()
 
+    const handleCardClick = () => {
+        if (props.id) {
+            const userId: string = props.id;
+            UserStore.getUserById(userId);
+            navigate(`/user/${userId}`);
+        }
+    };
+
      return (
         <Card sx={{ maxWidth: 250 }}>
-            <CardActionArea onClick={() => navigate(`/user/${props.id}`)}>
+            <CardActionArea onClick={handleCardClick}>
                 <CardMedia
                     component="img"
                     height="250"

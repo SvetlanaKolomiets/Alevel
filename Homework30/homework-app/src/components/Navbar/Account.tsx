@@ -1,7 +1,7 @@
-import { Avatar, Box, Divider, IconButton, ListItemIcon, Menu, MenuItem, Tooltip } from "@mui/material";
+import { Avatar, Box, IconButton, ListItemIcon, Menu, MenuItem, Tooltip } from "@mui/material";
 import { FC, ReactElement, useContext } from "react";
 import { AppStoreContext } from "../../App";
-import { Logout, PersonAdd, Settings } from "@mui/icons-material";
+import { Logout} from "@mui/icons-material";
 import React from "react";
 
 const Account: FC = (): ReactElement => {

@@ -1,7 +1,6 @@
-import React, { FormEvent } from 'react';
-import { Button, FormControl, FormHelperText, Input, InputLabel } from '@mui/material';
+import React from 'react';
 import { createUser } from '../../api/modules/users';
-import { makeAutoObservable, observable, action } from 'mobx';
+import { makeAutoObservable } from 'mobx';
 
 class UserFormStore {
   name = '';
