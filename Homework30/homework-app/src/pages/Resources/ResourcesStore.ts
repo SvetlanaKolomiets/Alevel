@@ -7,21 +7,7 @@ class ResourcesStore {
   totalPages = 0;
   currentPage = 1;
   isLoading = false;
-
-//   async getResourceByPage(page: number) {
-//     this.isLoading = true;
-//     try {
-//       const res = await resourceApi.getByPage(page);
-//       this.resources = res.data;
-//       this.totalPages = res.total_pages;
-//     } catch (error) {
-//       console.error('Failed to get resources:', error);
-//     } finally {
-//       this.isLoading = false;
-//     }
-//   }
-// }
-
+  
 constructor() {
     makeAutoObservable(this);
     runInAction(this.prefetchData);
