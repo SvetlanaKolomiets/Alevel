@@ -6,7 +6,7 @@ namespace Catalog.Host.Services.Interfaces;
 public interface ICatalogTypeService
 {
     Task<int?> Add(string type);
-    Task<List<CatalogBrandDto>> GetBrands();
+    Task<List<CatalogTypeDto>> GetTypes();
     Task<CatalogTypeDto> Update(UpdateTypeRequest type);
     Task<bool> Delete(int id);
 }

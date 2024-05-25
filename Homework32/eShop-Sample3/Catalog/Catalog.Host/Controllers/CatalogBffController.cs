@@ -17,17 +17,20 @@ public class CatalogBffController : ControllerBase
     private readonly ICatalogService _catalogService;
     private readonly ICatalogItemService _catalogItemService;
     private readonly ICatalogBrandService _catalogBrandService;
+    private readonly ICatalogTypeService _catalogTypeService;
 
     public CatalogBffController(
         ILogger<CatalogBffController> logger,
         ICatalogService catalogService,
         ICatalogItemService catalogItemService,
-        ICatalogBrandService catalogBrandService)
+        ICatalogBrandService catalogBrandService,
+        ICatalogTypeService catalogTypeService)
     {
         _logger = logger;
         _catalogService = catalogService;
         _catalogItemService = catalogItemService;
         _catalogBrandService = catalogBrandService;
+        _catalogTypeService = catalogTypeService;
     }
 
     [HttpPost]
@@ -92,7 +95,7 @@ public class CatalogBffController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetTypes()
     {
-        var types = await _catalogBrandService.GetBrands();
+        var types = await _catalogTypeService.GetTypes();
         if (types == null)
         {
             return NotFound();

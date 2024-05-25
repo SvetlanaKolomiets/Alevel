@@ -29,10 +29,10 @@ public class CatalogTypeService : BaseDataService<ApplicationDbContext>, ICatalo
         return ExecuteSafeAsync(() => _catalogTypeRepository.Add(type));
     }
 
-    public Task<List<CatalogBrandDto>> GetBrands()
+    public Task<List<CatalogTypeDto>> GetTypes()
     {
         var types = _catalogTypeRepository.GetTypesAsync().Result;
-        return Task.Run(() => _mapper.Map<List<CatalogBrandDto>>(types));
+        return Task.Run(() => _mapper.Map<List<CatalogTypeDto>>(types));
     }
 
     public Task<CatalogTypeDto> Update(UpdateTypeRequest type)
